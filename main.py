@@ -1,13 +1,16 @@
-
-from bke import EvaluationAgent, start, can_win
-
-class MyRandomAgent(EvaluationAgent):
-  def evaluate (self, board, my_symbol, opponent_symbol):
-    getal = 1
-    if can_win(board, opponent_symbol):
-      getal = getal - 1000
-    return getal
-
-
-my_random_agent = MyRandomAgent()
-start(player_o=my_random_agent, player_x=my_random_agent)
+from bke import MLAgent, is_winner, opponent, start
+ 
+ 
+class MyAgent(MLAgent):
+    def evaluate(self, board):
+        if is_winner(board, self.symbol):
+            reward = 1
+        elif is_winner(board, opponent[self.symbol]):
+            reward = -1
+        else:
+            reward = 0
+        return reward
+    
+ 
+my_agent = MyAgent()
+start(player_x=my_agent)
