@@ -15,7 +15,9 @@ class MyAgent(MLAgent):
     
     
 random.seed(1)
- 
+
+my_agent = MyAgent(alpha=0.8, epsilon=0.2)
+
 my_agent = MyAgent()
 random_agent = RandomAgent()
  
