@@ -1,8 +1,11 @@
 import random
  
-from bke import MLAgent, is_winner, opponent, RandomAgent, train_and_plot
- 
- 
+from bke import start, MLAgent, is_winner, opponent, RandomAgent, train_and_plot, EvaluationAgent
+
+class MyRandomAgent(EvaluationAgent):
+    def evaluate (self, board, y_symbol, opponent_symbol):
+     return random.randint(1, 500)
+
 class MyAgent(MLAgent):
     def evaluate(self, board):
         if is_winner(board, self.symbol):
@@ -13,15 +16,23 @@ class MyAgent(MLAgent):
             reward = 0
         return reward
     
+def play():    
+  start()
+
+def randomAgent():   
+  my_random_agent = MyRandomAgent()
+  start(player_o=my_random_agent)
+
+def plot3(): 
+  random.seed(1)
+  
+  my_agent = load('MyAgent_3000')
+  my_agent.learning = False
+
+def simpleopponent():
+  aap = "noot"
     
-
-random.seed(1)
-
-def plot1():
-def plot2():
-def plot3():
-def plot4():
-def plot5():
+def trainAndPlot():
   my_agent = MyAgent(alpha=0.8, epsilon=0.2)
   
   my_agent = MyAgent()
@@ -37,19 +48,16 @@ def plot5():
 
 print("1. speel tegen een medespeler")
 print("2. speel tegen een beginner")
-print("3. train je tegenstander")
-print("4. speel tegen een expert")
-print("5. train, valideer en plot")
+print("3. speel tegen een expert")
+print("4. train, valideer en plot")
 
 i = input()
 if i == "1":
-  plot1()
+  play()
 elif i == "2":
-  plot2()
+  randomAgent()
 elif i == "3":
-  plot3()
+  simpleopponent()
 elif i == "4":
-  plot4()
-elif i == "5":
-  plot5()
+  trainAndPlot()
   
