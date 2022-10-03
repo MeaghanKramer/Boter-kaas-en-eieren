@@ -1,10 +1,11 @@
 import random
  
-from bke import start, MLAgent, is_winner, opponent, RandomAgent, train_and_plot, EvaluationAgent
+from bke import start, MLAgent, is_winner, opponent, load, RandomAgent, train_and_plot, EvaluationAgent
 
 class MyRandomAgent(EvaluationAgent):
     def evaluate (self, board, y_symbol, opponent_symbol):
      return random.randint(1, 500)
+
 
 class MyAgent(MLAgent):
     def evaluate(self, board):
@@ -16,21 +17,21 @@ class MyAgent(MLAgent):
             reward = 0
         return reward
     
+
 def play():    
   start()
+
 
 def randomAgent():   
   my_random_agent = MyRandomAgent()
   start(player_o=my_random_agent)
 
-def plot3(): 
-  random.seed(1)
-  
+
+def smartOpponent():
+  my_agent = MyAgent()
   my_agent = load('MyAgent_3000')
   my_agent.learning = False
-
-def simpleopponent():
-  aap = "noot"
+  start(player_x=my_agent)
     
 def trainAndPlot():
   my_agent = MyAgent(alpha=0.8, epsilon=0.2)
@@ -46,6 +47,7 @@ def trainAndPlot():
       validations=1000)
 
 
+
 print("1. speel tegen een medespeler")
 print("2. speel tegen een beginner")
 print("3. speel tegen een expert")
@@ -57,7 +59,7 @@ if i == "1":
 elif i == "2":
   randomAgent()
 elif i == "3":
-  simpleopponent()
+  smartOpponent()
 elif i == "4":
   trainAndPlot()
   
