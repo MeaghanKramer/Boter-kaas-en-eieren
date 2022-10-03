@@ -29,10 +29,8 @@ def randomAgent():
 
 def smartOpponent():
   my_agent = MyAgent()
-  my_agent = load('MyAgent_3000')
-  my_agent.learning = False
   start(player_x=my_agent)
-    
+  
 def trainAndPlot():
   my_agent = MyAgent(alpha=0.8, epsilon=0.2)
   
@@ -46,12 +44,19 @@ def trainAndPlot():
       trainings=50,
       validations=1000)
 
+def undefeatable ():
+  my_agent = MyAgent()
+  my_agent = load('MyAgent_3000')
+  my_agent.learning = False
+  start(player_x=my_agent)
 
-
-print("1. speel tegen een medespeler")
-print("2. speel tegen een beginner")
-print("3. speel tegen een expert")
-print("4. train, valideer en plot")
+print("Kies uit de volgende opties wat voor spel u zou willen spelen!")
+print("   ")
+print("1. Medespeler! Speel tegen je kamaraat en kom erachter wie de sterkste speler is!")
+print("2. Beginner! Leer de beste tactieken te gebruiken zonder te hard ten onder te gaan..")
+print("3. Expert! Kan jij de echte gevaren van dit spel al aan?")
+print("4. Train, valideer en plot: kijk welke vooruitgangen je maakt!")
+print("5. Eindbaas! Niemand heeft deze ooit weten te verslaan...")
 
 i = input()
 if i == "1":
@@ -62,4 +67,7 @@ elif i == "3":
   smartOpponent()
 elif i == "4":
   trainAndPlot()
+
+elif i == "5" :
+  undefeatable ()
   
