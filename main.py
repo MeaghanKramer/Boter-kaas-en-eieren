@@ -52,7 +52,7 @@ def undefeatable ():
 
 print("Kies uit de volgende opties wat voor spel u zou willen spelen!")
 print("   ")
-print("1. Medespeler! Speel tegen je kamaraat en kom erachter wie de sterkste speler is!")
+print("1. Medespeler! Speel tegen je kamaraad en kom erachter wie de sterkste speler is!")
 print("2. Beginner! Leer de beste tactieken te gebruiken zonder te hard ten onder te gaan..")
 print("3. Expert! Kan jij de echte gevaren van dit spel al aan?")
 print("4. Train, valideer en plot: kijk welke vooruitgangen je maakt!")
